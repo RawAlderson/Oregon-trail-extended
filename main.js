@@ -12,7 +12,7 @@ class Traveler {
 
 class Wagon {
     constructor (capacity, passengers) {
-        this.capacity = 2
+        this.capacity = capacity
         this.passengers = []
     }
     getAvailableSeatCount () {
@@ -30,6 +30,12 @@ class Wagon {
         }
     }
     totalFood () {
-        return (this.passengers[0]).food + (this.passengers[1]).food
+        let foodArray = []
+        for (let counter = 0; counter < this.passengers.length; counter += 1) {
+            foodArray.push(this.passengers[counter].food)
+        }
+        return foodArray.reduce(function (travelerX, travelerY) {
+            return travelerX + travelerY
+        })
     }
 }
